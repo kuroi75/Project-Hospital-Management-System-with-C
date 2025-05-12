@@ -112,14 +112,14 @@ void allPatient()
     //scanf("%s", p.name);
     scanf(" %[^\n]", p.name); //for full name with spasc
 
-    printf("\nEnter age: ");
+    printf("Enter age: ");
     scanf("%d", &p.age);
 
-    printf("\nEnter gender: ");
+    printf("Enter gender: ");
     scanf("%s",p.gender);
 
     int choice;
-    printf("Choose appointment type:\n");
+    printf("\nChoose appointment type:\n");
     printf("1. Emrgency! \n2. Regular\n");
     scanf("%d", &choice);
 
@@ -158,21 +158,37 @@ void allPatient()
     printf("registered successfully \n");
 }
 
+//machines for hospital
+void equipment()
+{
+    printf("\n======================");
+    printf("\n||--- Machines ---||\n");
+    printf("======================\n");
+    printf("1. X-ray machines \n");
+    printf("2. Ultrasound machines \n");
+    printf("3. MRI scanners \n");
+    printf("4. CT scanners \n");
+    printf("5. Microbiology \n");
+    printf("6. ECG machines \n");
+    printf("7. Blood pressure monitors \n");
+    printf(" see more.... \n");
+}
+
 //Admin panel
 void adminPanel()
 {
     int adminChoice;
     while (1)
     {
-        printf("\n=======================");
+        printf("\n========================");
         printf("\n||--- Admin Panel ---||\n");
-        printf("=======================\n");
+        printf("========================\n");
         printf("1. Show All Patients\n");
         printf("2. Search Patient\n");
         printf("3. View Stats\n");
         printf("4. Discharge Patient\n");
-        printf("5. Show Patients by Doctor\n");
-        printf("6. Exit Admin Panel\n");
+        printf("5. Equipments/Machines \n");
+        printf("6. Exit Admin Panel \n");
         printf("Enter your choice: ");
         scanf("%d", &adminChoice);
 
@@ -194,9 +210,8 @@ void adminPanel()
             case 4:
                 deletePatient();
                 break;
-
             case 5:
-                showPatientsBydoctor();
+                equipment();
                 break;
 
             case 6:
@@ -234,9 +249,9 @@ int main()
     int choice;
     while (1)
     {
-        printf("\n======================================");
-        printf("\n||--- Hospital Management System ---||");
-        printf("\n======================================\n");
+        printf("\n=========================================");
+        printf("\n||--- NUB Hospital Management System ---||");
+        printf("\n=========================================\n");
 
         printf("1. New Patient\n");
         printf("2. Admin Panel\n");
@@ -262,7 +277,6 @@ int main()
 
     return 0;
 }
-
 
 //search patient and list
 void showPatients()
@@ -305,34 +319,6 @@ void searchPatient()
         }
     }
         printf("No patient found with name %s.\n", name);
-}
-
-//show patients using POINTER
-void showPatientsBydoctor()
-{
-    int docID;
-    printf("enter Doctor ID: ");
-    scanf("%d", &docID);
-
-    int found = 0;
-    printf("\n -- Patients under doctor ID: %d -- \n", docID);
-    for(int i = 0; i<patient_count; i++)
-    {
-        if(patients[i].docID == docID)
-        {
-            printf("Patient ID: %d\n", patients[i].id);
-            printf("Name: %s\n", patients[i].name);
-            printf("Age: %d\n", patients[i].age);
-            printf("Gender: %s\n", patients[i].gender);
-            printf("Type: %s\n", patients[i].type);
-            printf("\n");
-            found= 1;
-        }
-    }
-        if (!found)
-    {
-        printf("No patients is under this doctor\n");
-    }
 }
 
 //delete patient
